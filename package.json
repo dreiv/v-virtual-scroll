@@ -12,6 +12,7 @@
     "format": "oxfmt src/"
   },
   "dependencies": {
+    "@vueuse/core": "^14.3.0",
     "vue": "beta"
   },
   "devDependencies": {
