@@ -39,8 +39,10 @@ const fetchNextChunk = async (cursor: number) => {
 // 2. Sentinel target to trigger the next fetch
 const sentinel = ref<HTMLElement | null>(null)
 
-useIntersectionObserver(sentinel, ([{ isIntersecting }]) => {
-  if (isIntersecting && nextCursor.value !== null) {
+useIntersectionObserver(sentinel, (entries) => {
+  const entry = entries[0]
+
+  if (entry?.isIntersecting && nextCursor.value !== null) {
     // Hit the mock API, push new items to allItems.value, update nextCursor
     fetchNextChunk(nextCursor.value)
   }
